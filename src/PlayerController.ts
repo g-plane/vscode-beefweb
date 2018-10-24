@@ -89,7 +89,6 @@ export class PlayerController {
                 }
               )
               .on('error', error => this.eventBus.emit('error', error))
-              .end()
           })
         })
         .on('error', error => this.eventBus.emit('error', error))
