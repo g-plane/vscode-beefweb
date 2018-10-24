@@ -23,7 +23,7 @@
   "activationEvents": [
     "*"
   ],
-  "icon": "./media/icon.png",
+  "icon": "media/icon.png",
   "main": "./out/extension",
   "contributes": {
     "commands": [
