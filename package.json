@@ -5,6 +5,10 @@
   "license": "MIT",
   "version": "0.1.0",
   "publisher": "gplane",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/g-plane/vscode-beefweb"
+  },
   "engines": {
     "vscode": "^1.23.0"
   },
