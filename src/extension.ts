@@ -8,11 +8,13 @@ export function activate(context: vscode.ExtensionContext) {
   status.command = 'beefweb.togglePause'
   status.tooltip = 'Click to play/pause.'
   status.show()
+  context.subscriptions.push(status)
 
   const controller = new PlayerController(
     vscode.workspace.getConfiguration('beefweb').get('server.host'),
     vscode.workspace.getConfiguration('beefweb').get('server.port')
   )
+  context.subscriptions.push(controller)
   controller.eventBus.on('statusChanged', playerStatus => {
     if (playerStatus.playbackState === 'stopped') {
       status.text = ''
@@ -53,14 +55,10 @@ export function activate(context: vscode.ExtensionContext) {
     if (!error.message.includes('ECONNREFUSED')) {
       vscode.window.showErrorMessage(`Beefweb: ${error.message}`)
     }
-    status.dispose()
-    controller.dispose()
     context.subscriptions.forEach(subscription => subscription.dispose())
   })
 
   controller.eventBus.on('end', () => {
-    status.dispose()
-    controller.dispose()
     context.subscriptions.forEach(subscription => subscription.dispose())
   })
 }
