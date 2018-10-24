@@ -5,7 +5,7 @@ export function activate(context: vscode.ExtensionContext) {
   const status = vscode.window.createStatusBarItem(
     vscode.StatusBarAlignment.Left
   )
-  status.command = 'extension.togglePause'
+  status.command = 'beefweb.togglePause'
   status.tooltip = 'Click to play/pause.'
   status.show()
 
