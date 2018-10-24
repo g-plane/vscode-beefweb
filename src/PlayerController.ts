@@ -1,6 +1,5 @@
 import * as EventEmitter from 'events'
 import * as http from 'http'
-import { URL } from 'url'
 
 export class PlayerController {
   public eventBus = new EventEmitter()
@@ -37,7 +36,12 @@ export class PlayerController {
 
   private sendPOST(uri: string) {
     http
-      .request(Object.assign(new URL(`${this.uri}${uri}`), { method: 'POST' }))
+      .request({
+        host: '127.0.0.1',
+        port: 8880,
+        method: 'POST',
+        path: `/api${uri}`
+      })
       .on('error', error => this.eventBus.emit('error', error))
       .end()
   }
