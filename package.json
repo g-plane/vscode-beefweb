@@ -1,0 +1,79 @@
+{
+  "name": "vscode-beefweb",
+  "displayName": "Beefweb",
+  "description": "Control your foobar2000 or deadbeef via beefweb server.",
+  "license": "MIT",
+  "version": "0.1.0",
+  "publisher": "gplane",
+  "engines": {
+    "vscode": "^1.23.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "beefweb",
+    "foobar2000",
+    "deadbeef"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "icon": "./media/icon.png",
+  "main": "./out/extension",
+  "contributes": {
+    "commands": [
+      {
+        "category": "beefweb",
+        "command": "beefweb.playPrev",
+        "title": "Play previous track"
+      },
+      {
+        "category": "beefweb",
+        "command": "beefweb.playNext",
+        "title": "Play next track"
+      },
+      {
+        "category": "beefweb",
+        "command": "beefweb.togglePause",
+        "title": "Toggle pause"
+      },
+      {
+        "category": "beefweb",
+        "command": "beefweb.switchTrack",
+        "title": "Switch to another track"
+      }
+    ],
+    "configuration": {
+      "title": "Beefweb Control",
+      "properties": {
+        "beefweb.server.host": {
+          "type": "string",
+          "default": "127.0.0.1",
+          "description": "The host of Beefweb server."
+        },
+        "beefweb.server.port": {
+          "type": "integer",
+          "default": 8880,
+          "description": "The port of Beefweb server."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test",
+    "format": "prettier --write src/**/*.ts"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^8.10.25",
+    "@types/node-fetch": "^2.1.2",
+    "prettier": "1.14.3",
+    "typescript": "^3.1.3",
+    "vscode": "^1.1.21"
+  }
+}
