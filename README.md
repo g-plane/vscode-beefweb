@@ -24,19 +24,19 @@ Then you just need to install this extension in VS Code extension marketplace.
 
 Playing:
 
-![](./media/playing.png)
+![](https://media.githubusercontent.com/media/g-plane/vscode-beefweb/master/media/playing.png)
 
 Paused:
 
-![](./media/paused.png)
+![](https://media.githubusercontent.com/media/g-plane/vscode-beefweb/master/media/paused.png)
 
 Commands:
 
-![](./media/commands.png)
+![](https://media.githubusercontent.com/media/g-plane/vscode-beefweb/master/media/commands.png)
 
 Select a song from playlist:
 
-![](./media/list.png)
+![](https://media.githubusercontent.com/media/g-plane/vscode-beefweb/master/media/list.png)
 
 ## License
 
