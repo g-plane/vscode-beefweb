@@ -46,6 +46,21 @@ export class PlayerController {
       .end()
   }
 
+  private getData(uri: string) {
+    return new Promise<any>(resolve => {
+      http
+        .get(this.uri + uri, response => {
+          let rawData = ''
+          response.setEncoding('utf8')
+          response
+            .on('data', data => (rawData += data))
+            .on('end', () => resolve(JSON.parse(rawData)))
+            .on('error', error => this.eventBus.emit('error', error))
+        })
+        .on('error', error => this.eventBus.emit('error', error))
+    })
+  }
+
   playPrev() {
     this.sendPOST('/player/previous')
   }
@@ -58,45 +73,18 @@ export class PlayerController {
     this.sendPOST('/player/pause/toggle')
   }
 
-  retrievePlaylist() {
-    return new Promise<string[]>(resolve => {
-      http
-        .get(`${this.uri}/playlists`, response => {
-          let rawData = ''
-          response.setEncoding('utf8')
-          response.on('data', data => (rawData += data))
-          response.on('end', () => {
-            const { playlists } = JSON.parse(rawData)
-            const { id, itemCount } = playlists.find(
-              (playlist: { isCurrent: boolean }) => playlist.isCurrent
-            )
+  async retrievePlaylist() {
+    const { playlists } = await this.getData('/playlists')
+    const { id, itemCount } = playlists.find(
+      (playlist: { isCurrent: boolean }) => playlist.isCurrent
+    )
 
-            http
-              .get(
-                `${
-                  this.uri
-                }/playlists/${id}/items/0:${itemCount}?columns=%25artist%25%20-%20%25title%25`,
-                response => {
-                  let rawData = ''
-                  response.setEncoding('utf8')
-                  response.on('data', data => (rawData += data))
-                  response.on('end', () => {
-                    const {
-                      playlistItems: { items }
-                    } = JSON.parse(rawData)
-                    resolve(
-                      items.map(
-                        (item: { columns: string[] }) => item.columns[0]
-                      )
-                    )
-                  })
-                }
-              )
-              .on('error', error => this.eventBus.emit('error', error))
-          })
-        })
-        .on('error', error => this.eventBus.emit('error', error))
-    })
+    const {
+      playlistItems: { items }
+    } = await this.getData(
+      `/playlists/${id}/items/0:${itemCount}?columns=%25artist%25%20-%20%25title%25`
+    )
+    return items.map((item: { columns: string[] }) => item.columns[0])
   }
 
   switchSong(index: number) {
