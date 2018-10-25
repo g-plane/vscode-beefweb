@@ -5,8 +5,7 @@ export function activate(context: vscode.ExtensionContext) {
   const status = vscode.window.createStatusBarItem(
     vscode.StatusBarAlignment.Left
   )
-  status.command = 'beefweb.togglePause'
-  status.tooltip = 'Click to play/pause.'
+  initStatusBarAction(status)
   status.show()
   context.subscriptions.push(status)
 
@@ -22,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     status.text = `${playerStatus.playbackState === 'paused' ? '⏸' : '▶️'} ${
-      playerStatus.track
+      playerStatus.song
     }`
   })
 
@@ -42,11 +41,11 @@ export function activate(context: vscode.ExtensionContext) {
     })
   )
   context.subscriptions.push(
-    vscode.commands.registerCommand('beefweb.switchTrack', async () => {
+    vscode.commands.registerCommand('beefweb.switchSong', async () => {
       const items = await controller.retrievePlaylist()
       const item = await vscode.window.showQuickPick(items)
       if (item) {
-        controller.switchTrack(items.indexOf(item))
+        controller.switchSong(items.indexOf(item))
       }
     })
   )
@@ -64,3 +63,27 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate() {}
+
+function initStatusBarAction(status: vscode.StatusBarItem) {
+  type Action = 'togglePause' | 'playNext' | 'switchSong'
+
+  const action: Action =
+    vscode.workspace.getConfiguration('beefweb').get('statusBarAction') ||
+    'togglePause'
+
+  switch (action) {
+    case 'togglePause':
+      status.tooltip = 'Click to toggle pause/play.'
+      break
+    case 'playNext':
+      status.tooltip = 'Click to play next song.'
+      break
+    case 'switchSong':
+      status.tooltip = 'Click to switch to another song.'
+      break
+  }
+
+  status.command = `beefweb.${action}`
+
+  return status
+}

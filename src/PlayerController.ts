@@ -24,7 +24,7 @@ export class PlayerController {
             ) {
               this.eventBus.emit('statusChanged', {
                 playbackState: player.playbackState,
-                track: player.activeItem.columns[0]
+                song: player.activeItem.columns[0]
               })
             }
           })
@@ -99,7 +99,7 @@ export class PlayerController {
     })
   }
 
-  switchTrack(index: number) {
+  switchSong(index: number) {
     this.sendPOST(`/player/play/p1/${index}`)
   }
 

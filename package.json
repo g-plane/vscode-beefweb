@@ -30,12 +30,12 @@
       {
         "category": "beefweb",
         "command": "beefweb.playPrev",
-        "title": "Play previous track"
+        "title": "Play previous song"
       },
       {
         "category": "beefweb",
         "command": "beefweb.playNext",
-        "title": "Play next track"
+        "title": "Play next song"
       },
       {
         "category": "beefweb",
@@ -44,8 +44,8 @@
       },
       {
         "category": "beefweb",
-        "command": "beefweb.switchTrack",
-        "title": "Switch to another track"
+        "command": "beefweb.switchSong",
+        "title": "Switch to another song"
       }
     ],
     "configuration": {
@@ -60,6 +60,16 @@
           "type": "integer",
           "default": 8880,
           "description": "The port of Beefweb server."
+        },
+        "beefweb.statusBarAction": {
+          "type": "string",
+          "enum": [
+            "togglePause",
+            "playNext",
+            "switchSong"
+          ],
+          "default": "togglePause",
+          "description": "The action of clicking status bar."
         }
       }
     }
