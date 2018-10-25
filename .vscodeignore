@@ -15,4 +15,4 @@ yarn-error.log
 node_modules/
 media/
 !media/icon.png
-azure-pipelines.yml
+.travis.yml
