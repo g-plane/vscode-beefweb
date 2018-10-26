@@ -3,7 +3,7 @@
   "displayName": "Beefweb",
   "description": "Control your foobar2000 or deadbeef via beefweb server.",
   "license": "MIT",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "gplane",
   "repository": {
     "type": "git",
