@@ -73,6 +73,14 @@ export class PlayerController {
     this.sendPOST('/player/pause/toggle')
   }
 
+  play() {
+    this.sendPOST('/player/play')
+  }
+
+  stop() {
+    this.sendPOST('/player/stop')
+  }
+
   async retrievePlaylist(playlistId?: string) {
     const { playlists } = await this.getData('/playlists')
     const { id, itemCount } = playlists.find(

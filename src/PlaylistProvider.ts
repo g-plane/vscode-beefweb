@@ -25,7 +25,7 @@ export class PlaylistProvider implements vscode.TreeDataProvider<TreeItemData> {
     if (this.isPlaylistName(element)) {
       item.collapsibleState = vscode.TreeItemCollapsibleState.Expanded
     } else {
-      item.iconPath = path.join(__dirname, '..', 'media', 'play.svg')
+      item.iconPath = path.join(__dirname, '..', 'media', 'play_song.svg')
       item.command = {
         command: 'beefweb.switchSong',
         title: 'Switch',

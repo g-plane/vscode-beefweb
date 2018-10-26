@@ -53,6 +53,16 @@ export function activate(context: vscode.ExtensionContext) {
     })
   )
   context.subscriptions.push(
+    vscode.commands.registerCommand('beefweb.play', () => {
+      controller.play()
+    })
+  )
+  context.subscriptions.push(
+    vscode.commands.registerCommand('beefweb.stop', () => {
+      controller.stop()
+    })
+  )
+  context.subscriptions.push(
     vscode.commands.registerCommand(
       'beefweb.switchSong',
       async (item?: string, playlist?: string) => {

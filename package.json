@@ -30,17 +30,32 @@
       {
         "category": "beefweb",
         "command": "beefweb.playPrev",
-        "title": "Play previous song"
+        "title": "Play previous song",
+        "icon": "media/prev.svg"
       },
       {
         "category": "beefweb",
         "command": "beefweb.playNext",
-        "title": "Play next song"
+        "title": "Play next song",
+        "icon": "media/next.svg"
       },
       {
         "category": "beefweb",
         "command": "beefweb.togglePause",
-        "title": "Toggle pause"
+        "title": "Toggle pause",
+        "icon": "media/pause.svg"
+      },
+      {
+        "category": "beefweb",
+        "command": "beefweb.play",
+        "title": "Play song",
+        "icon": "media/play.svg"
+      },
+      {
+        "category": "beefweb",
+        "command": "beefweb.stop",
+        "title": "Stop",
+        "icon": "media/stop.svg"
       },
       {
         "category": "beefweb",
@@ -78,7 +93,7 @@
         {
           "id": "beefweb",
           "title": "Beefweb",
-          "icon": "media/icon.svg"
+          "icon": "media/view.svg"
         }
       ]
     },
@@ -86,7 +101,36 @@
       "beefweb": [
         {
           "id": "beefwebPlaylist",
-          "name": "Current Playlist"
+          "name": "Playlists"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "when": "view == beefwebPlaylist",
+          "command": "beefweb.play",
+          "group": "navigation@1"
+        },
+        {
+          "when": "view == beefwebPlaylist",
+          "command": "beefweb.togglePause",
+          "group": "navigation@2"
+        },
+        {
+          "when": "view == beefwebPlaylist",
+          "command": "beefweb.playPrev",
+          "group": "navigation@3"
+        },
+        {
+          "when": "view == beefwebPlaylist",
+          "command": "beefweb.playNext",
+          "group": "navigation@4"
+        },
+        {
+          "when": "view == beefwebPlaylist",
+          "command": "beefweb.stop",
+          "group": "navigation@5"
         }
       ]
     }
