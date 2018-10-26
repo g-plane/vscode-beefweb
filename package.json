@@ -72,6 +72,23 @@
           "description": "The action of clicking status bar."
         }
       }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "beefweb",
+          "title": "Beefweb",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "beefweb": [
+        {
+          "id": "beefwebPlaylist",
+          "name": "Current Playlist"
+        }
+      ]
     }
   },
   "scripts": {

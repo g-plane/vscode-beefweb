@@ -73,10 +73,11 @@ export class PlayerController {
     this.sendPOST('/player/pause/toggle')
   }
 
-  async retrievePlaylist() {
+  async retrievePlaylist(playlistId?: string) {
     const { playlists } = await this.getData('/playlists')
     const { id, itemCount } = playlists.find(
-      (playlist: { isCurrent: boolean }) => playlist.isCurrent
+      (playlist: PlaylistInfo) =>
+        playlistId ? playlist.id === playlistId : playlist.isCurrent
     )
 
     const {
@@ -87,8 +88,38 @@ export class PlayerController {
     return items.map((item: { columns: string[] }) => item.columns[0])
   }
 
-  switchSong(index: number) {
-    this.sendPOST(`/player/play/p1/${index}`)
+  async allPlaylists() {
+    const { playlists }: { playlists: PlaylistInfo[] } = await this.getData(
+      '/playlists'
+    )
+
+    const ret: {
+      [key: string]: { title: string; items: string[] }
+    } = Object.create(null)
+
+    await Promise.all(
+      playlists.map(async ({ id, title }) => {
+        ret[id] = {
+          title,
+          items: await this.retrievePlaylist(id)
+        }
+      })
+    )
+
+    return ret
+  }
+
+  async switchSong(index: number, playlist?: string) {
+    if (!playlist) {
+      const {
+        player: {
+          activeItem: { playlistId }
+        }
+      } = await this.getData('/player')
+      playlist = playlistId
+    }
+
+    return this.sendPOST(`/player/play/${playlist}/${index}`)
   }
 
   dispose() {

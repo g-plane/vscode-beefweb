@@ -1,5 +1,6 @@
 import * as vscode from 'vscode'
 import { PlayerController } from './PlayerController'
+import { PlaylistProvider, TreeItemData } from './PlaylistProvider'
 
 export function activate(context: vscode.ExtensionContext) {
   const status = vscode.window.createStatusBarItem(
@@ -25,6 +26,17 @@ export function activate(context: vscode.ExtensionContext) {
     }`
   })
 
+  const provider = new PlaylistProvider(controller)
+  context.subscriptions.push(
+    vscode.window.registerTreeDataProvider<TreeItemData>(
+      'beefwebPlaylist',
+      provider
+    ),
+    vscode.window.createTreeView<TreeItemData>('beefwebPlaylist', {
+      treeDataProvider: provider
+    })
+  )
+
   context.subscriptions.push(
     vscode.commands.registerCommand('beefweb.playPrev', () => {
       controller.playPrev()
@@ -41,13 +53,16 @@ export function activate(context: vscode.ExtensionContext) {
     })
   )
   context.subscriptions.push(
-    vscode.commands.registerCommand('beefweb.switchSong', async () => {
-      const items = await controller.retrievePlaylist()
-      const item = await vscode.window.showQuickPick(items)
-      if (item) {
-        controller.switchSong(items.indexOf(item))
+    vscode.commands.registerCommand(
+      'beefweb.switchSong',
+      async (item?: string, playlist?: string) => {
+        const items = await controller.retrievePlaylist(playlist)
+        item = item || (await vscode.window.showQuickPick(items))
+        if (item) {
+          controller.switchSong(items.indexOf(item), playlist)
+        }
       }
-    })
+    )
   )
 
   controller.eventBus.on('error', (error: Error) => {
