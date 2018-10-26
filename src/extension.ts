@@ -6,7 +6,7 @@ export function activate(context: vscode.ExtensionContext) {
   const status = vscode.window.createStatusBarItem(
     vscode.StatusBarAlignment.Left
   )
-  initStatusBarAction(status)
+  setStatusBarAction(status)
   status.show()
   context.subscriptions.push(status)
 
@@ -64,6 +64,13 @@ export function activate(context: vscode.ExtensionContext) {
       }
     )
   )
+  context.subscriptions.push(
+    vscode.workspace.onDidChangeConfiguration(event => {
+      if (event.affectsConfiguration('beefweb.statusBarAction')) {
+        setStatusBarAction(status)
+      }
+    })
+  )
 
   controller.eventBus.on('error', (error: Error) => {
     if (!error.message.includes('ECONNREFUSED')) {
@@ -79,7 +86,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 export function deactivate() {}
 
-function initStatusBarAction(status: vscode.StatusBarItem) {
+function setStatusBarAction(status: vscode.StatusBarItem) {
   type Action = 'togglePause' | 'playNext' | 'switchSong'
 
   const action: Action =
