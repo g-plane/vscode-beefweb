@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.4.0 [2018-10-28]
+
+- Support controlling player via tree view.
+
 ## v0.3.0 [2018-10-26]
 
 - Add tree view for playlists.
