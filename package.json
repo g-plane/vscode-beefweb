@@ -25,6 +25,7 @@
   ],
   "icon": "media/icon.png",
   "main": "./out/extension",
+  "extensionKind": "ui",
   "contributes": {
     "commands": [
       {
