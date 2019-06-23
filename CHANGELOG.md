@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5.0 [2019-06-23]
+
+- Mark the extension kind as `ui`.
+
 ## v0.4.0 [2018-10-28]
 
 - Support controlling player via tree view.
