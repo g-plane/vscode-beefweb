@@ -143,6 +143,9 @@
     "test": "pnpm build && node ./node_modules/vscode/bin/test",
     "format": "prettier --write src/**/*.ts"
   },
+  "dependencies": {
+    "nanoevents": "^7.0.1"
+  },
   "devDependencies": {
     "@gplane/tsconfig": "^6.0.0",
     "@types/node": "^16.11.7",

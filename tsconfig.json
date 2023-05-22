@@ -1,7 +1,7 @@
 {
   "extends": "@gplane/tsconfig",
   "compilerOptions": {
-    "module": "commonjs",
+    "moduleResolution": "bundler",
     "target": "es2020",
     "rootDir": "src",
     "outDir": "out",
