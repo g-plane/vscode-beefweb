@@ -137,13 +137,14 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "test": "npm run compile && node ./node_modules/vscode/bin/test",
+    "vscode:prepublish": "pnpm build",
+    "build": "tsc -p .",
+    "watch": "tsc -watch -p .",
+    "test": "pnpm build && node ./node_modules/vscode/bin/test",
     "format": "prettier --write src/**/*.ts"
   },
   "devDependencies": {
+    "@gplane/tsconfig": "^6.0.0",
     "@types/node": "^16.11.7",
     "@vscode/test-electron": "^2.3.2",
     "prettier": "^2.8.8",

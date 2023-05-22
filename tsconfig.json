@@ -1,11 +1,11 @@
 {
+  "extends": "@gplane/tsconfig",
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es6",
-    "outDir": "out",
+    "target": "es2020",
     "rootDir": "src",
-    "strict": true,
-    "noUnusedLocals": true
+    "outDir": "out",
+    "verbatimModuleSyntax": false
   },
   "exclude": ["node_modules", ".vscode-test"]
 }
