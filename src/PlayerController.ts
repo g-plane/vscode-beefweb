@@ -2,7 +2,7 @@ import * as http from 'http'
 import { createNanoEvents } from 'nanoevents'
 
 export class PlayerController {
-  private eventBus = createNanoEvents()
+  public eventBus = createNanoEvents()
   private uri: string
 
   constructor(host: string = '127.0.0.1', port: number = 8880) {
