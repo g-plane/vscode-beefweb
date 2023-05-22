@@ -29,7 +29,7 @@ export class PlaylistProvider implements vscode.TreeDataProvider<TreeItemData> {
       item.command = {
         command: 'beefweb.switchSong',
         title: 'Switch',
-        arguments: [element.name, element.playlist]
+        arguments: [element.name, element.playlist],
       }
     }
 
@@ -41,15 +41,14 @@ export class PlaylistProvider implements vscode.TreeDataProvider<TreeItemData> {
       this.playlists = await this.controller.allPlaylists()
     }
 
-    if (!element) {
-      return Object.keys(this.playlists).map(item => ({
-        id: item,
-        title: this.playlists[item].title
-      }))
-    }
-    return this.playlists[element.id].items.map(item => ({
-      playlist: element.id,
-      name: item
-    }))
+    return element?.id
+      ? this.playlists[element.id]?.items.map((item) => ({
+          playlist: element.id,
+          name: item,
+        }))
+      : Object.entries(this.playlists).map(([id, { title }]) => ({
+          id,
+          title,
+        }))
   }
 }

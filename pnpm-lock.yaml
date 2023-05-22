@@ -12,6 +12,9 @@ devDependencies:
   '@types/node':
     specifier: ^16.11.7
     version: 16.11.7
+  '@types/vscode':
+    specifier: ^1.78.0
+    version: 1.78.0
   '@vscode/test-electron':
     specifier: ^2.3.2
     version: 2.3.2
@@ -35,6 +38,10 @@ packages:
 
   /@types/node@16.11.7:
     resolution: {integrity: sha512-QB5D2sqfSjCmTuWcBWyJ+/44bcjO7VbjSbOE0ucoVbAsSNQc4Lt6QkgkVXkTDwkL4z/beecZNDvVX15D4P8Jbw==}
+    dev: true
+
+  /@types/vscode@1.78.0:
+    resolution: {integrity: sha512-LJZIJpPvKJ0HVQDqfOy6W4sNKUBBwyDu1Bs8chHBZOe9MNuKTJtidgZ2bqjhmmWpUb0TIIqv47BFUcVmAsgaVA==}
     dev: true
 
   /@vscode/test-electron@2.3.2:
