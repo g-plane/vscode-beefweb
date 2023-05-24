@@ -24,7 +24,7 @@
     "*"
   ],
   "icon": "media/icon.png",
-  "main": "./out/extension-node.js",
+  "main": "./out/extension-electron.js",
   "extensionKind": "ui",
   "contributes": {
     "commands": [
@@ -138,7 +138,7 @@
   },
   "scripts": {
     "vscode:prepublish": "pnpm build",
-    "build": "esbuild ./src/extension.ts --bundle --outfile=out/extension-node.js --external:vscode --format=cjs --minify --platform=node --target=node16 && tsc -p test",
+    "build": "esbuild ./src/extension.ts --bundle --outfile=out/extension-electron.js --external:vscode --format=cjs --minify --platform=node --target=node16 && tsc -p test",
     "test": "pnpm build && node ./out/test/runTest.js",
     "format": "prettier --write src/**/*.ts"
   },
