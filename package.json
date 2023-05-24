@@ -24,7 +24,7 @@
     "*"
   ],
   "icon": "media/icon.png",
-  "main": "./out/extension",
+  "main": "./out/extension-node.js",
   "extensionKind": "ui",
   "contributes": {
     "commands": [
@@ -138,9 +138,8 @@
   },
   "scripts": {
     "vscode:prepublish": "pnpm build",
-    "build": "tsc -p .",
-    "watch": "tsc -watch -p .",
-    "test": "pnpm build && node ./node_modules/vscode/bin/test",
+    "build": "esbuild ./src/extension.ts --bundle --outfile=out/extension-node.js --external:vscode --format=cjs --minify --platform=node --target=node16 && tsc -p test",
+    "test": "pnpm build && node ./out/test/runTest.js",
     "format": "prettier --write src/**/*.ts"
   },
   "dependencies": {
@@ -148,9 +147,13 @@
   },
   "devDependencies": {
     "@gplane/tsconfig": "^6.0.0",
+    "@types/mocha": "^10.0.1",
     "@types/node": "^16.11.7",
     "@types/vscode": "^1.78.0",
     "@vscode/test-electron": "^2.3.2",
+    "esbuild": "^0.17.19",
+    "fast-glob": "^3.2.12",
+    "mocha": "^10.2.0",
     "prettier": "^2.8.8",
     "typescript": "^5.0.4"
   }

@@ -3,7 +3,7 @@ import * as http from 'http'
 import * as vscode from 'vscode'
 
 describe('Commands', () => {
-  it('play previous song', done => {
+  it('play previous song', (done) => {
     const server = http
       .createServer((req, res) => {
         res.end()
@@ -17,7 +17,7 @@ describe('Commands', () => {
     vscode.commands.executeCommand('beefweb.playPrev')
   })
 
-  it('play next song', done => {
+  it('play next song', (done) => {
     const server = http
       .createServer((req, res) => {
         res.end()
@@ -31,7 +31,7 @@ describe('Commands', () => {
     vscode.commands.executeCommand('beefweb.playNext')
   })
 
-  it('toggle pause', done => {
+  it('toggle pause', (done) => {
     const server = http
       .createServer((req, res) => {
         res.end()

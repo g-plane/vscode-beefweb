@@ -3,9 +3,10 @@
   "compilerOptions": {
     "moduleResolution": "bundler",
     "target": "es2020",
-    "rootDir": "src",
     "outDir": "out",
-    "verbatimModuleSyntax": false
+    "verbatimModuleSyntax": false,
+    "declaration": false,
+    "sourceMap": false
   },
-  "exclude": ["node_modules", ".vscode-test"]
+  "include": ["src"]
 }
