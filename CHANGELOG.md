@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.6.0 [2023-05-25]
+
+- Support running extension on Web (VS Code for Web).
+
 ## v0.5.0 [2019-06-23]
 
 - Mark the extension kind as `ui`.
