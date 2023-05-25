@@ -22,7 +22,7 @@ devDependencies:
     specifier: ^16.11.7
     version: 16.11.7
   '@types/vscode':
-    specifier: ^1.78.0
+    specifier: ^1.72.0
     version: 1.78.0
   '@vscode/test-electron':
     specifier: ^2.3.2
