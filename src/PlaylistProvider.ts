@@ -1,4 +1,3 @@
-import * as path from 'path'
 import * as vscode from 'vscode'
 import { PlayerController } from './PlayerController'
 
@@ -9,7 +8,10 @@ export type TreeItemData = Playlist | Song
 export class PlaylistProvider implements vscode.TreeDataProvider<TreeItemData> {
   private playlists!: { [key: string]: { title: string; items: string[] } }
 
-  constructor(private controller: PlayerController) {
+  constructor(
+    private controller: PlayerController,
+    private context: vscode.ExtensionContext
+  ) {
     //
   }
 
@@ -25,7 +27,11 @@ export class PlaylistProvider implements vscode.TreeDataProvider<TreeItemData> {
     if (this.isPlaylistName(element)) {
       item.collapsibleState = vscode.TreeItemCollapsibleState.Expanded
     } else {
-      item.iconPath = path.join(__dirname, '..', 'media', 'play_song.svg')
+      item.iconPath = vscode.Uri.joinPath(
+        this.context.extensionUri,
+        'media',
+        'play_song.svg'
+      )
       item.command = {
         command: 'beefweb.switchSong',
         title: 'Switch',
