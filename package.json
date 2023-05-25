@@ -26,7 +26,9 @@
   "icon": "media/icon.png",
   "main": "./out/extension-electron.js",
   "browser": "./out/extension-web.js",
-  "extensionKind": "ui",
+  "extensionKind": [
+    "ui"
+  ],
   "contributes": {
     "commands": [
       {
@@ -145,11 +147,6 @@
     "test": "pnpm build && node ./out/test/runTest.js",
     "format": "prettier --write src/**/*.ts"
   },
-  "dependencies": {
-    "eventsource": "^2.0.2",
-    "nanoevents": "^7.0.1",
-    "undici": "^5.22.1"
-  },
   "devDependencies": {
     "@gplane/tsconfig": "^6.0.0",
     "@types/mocha": "^10.0.1",
@@ -158,9 +155,12 @@
     "@vscode/test-electron": "^2.3.2",
     "@vscode/test-web": "^0.0.43",
     "esbuild": "^0.17.19",
+    "eventsource": "^2.0.2",
     "fast-glob": "^3.2.12",
     "mocha": "^10.2.0",
+    "nanoevents": "^7.0.1",
     "prettier": "^2.8.8",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "undici": "^5.22.1"
   }
 }

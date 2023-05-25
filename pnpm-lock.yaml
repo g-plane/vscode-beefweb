@@ -1,16 +1,5 @@
 lockfileVersion: '6.0'
 
-dependencies:
-  eventsource:
-    specifier: ^2.0.2
-    version: 2.0.2
-  nanoevents:
-    specifier: ^7.0.1
-    version: 7.0.1
-  undici:
-    specifier: ^5.22.1
-    version: 5.22.1
-
 devDependencies:
   '@gplane/tsconfig':
     specifier: ^6.0.0
@@ -33,18 +22,27 @@ devDependencies:
   esbuild:
     specifier: ^0.17.19
     version: 0.17.19
+  eventsource:
+    specifier: ^2.0.2
+    version: 2.0.2
   fast-glob:
     specifier: ^3.2.12
     version: 3.2.12
   mocha:
     specifier: ^10.2.0
     version: 10.2.0
+  nanoevents:
+    specifier: ^7.0.1
+    version: 7.0.1
   prettier:
     specifier: ^2.8.8
     version: 2.8.8
   typescript:
     specifier: ^5.0.4
     version: 5.0.4
+  undici:
+    specifier: ^5.22.1
+    version: 5.22.1
 
 packages:
 
@@ -465,7 +463,7 @@ packages:
     engines: {node: '>=10.16.0'}
     dependencies:
       streamsearch: 1.1.0
-    dev: false
+    dev: true
 
   /cache-content-type@1.0.1:
     resolution: {integrity: sha512-IKufZ1o4Ut42YUrZSo8+qnMTrFuKkvyoLXUywKz9GJ5BrhOFGhLdkx9sG4KAnVvbY6kEcSFjLQul+DVmBm2bgA==}
@@ -702,7 +700,7 @@ packages:
   /eventsource@2.0.2:
     resolution: {integrity: sha512-IzUmBGPR3+oUG9dUeXynyNmf91/3zUSJg1lCktzKw47OXuhco54U3r9B7O4XX+Rb1Itm9OZ2b0RkTs10bICOxA==}
     engines: {node: '>=12.0.0'}
-    dev: false
+    dev: true
 
   /fast-glob@3.2.12:
     resolution: {integrity: sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==}
@@ -1223,7 +1221,7 @@ packages:
   /nanoevents@7.0.1:
     resolution: {integrity: sha512-o6lpKiCxLeijK4hgsqfR6CNToPyRU3keKyyI6uwuHRvpRTbZ0wXw51WRgyldVugZqoJfkGFrjrIenYH3bfEO3Q==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
-    dev: false
+    dev: true
 
   /nanoid@3.3.3:
     resolution: {integrity: sha512-p1sjXuopFs0xg+fPASzQ28agW1oHD7xDsd9Xkf3T15H3c/cifrFHVwrh74PdoklAPi+i7MdRsE47vm2r6JoB+w==}
@@ -1484,7 +1482,7 @@ packages:
   /streamsearch@1.1.0:
     resolution: {integrity: sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==}
     engines: {node: '>=10.0.0'}
-    dev: false
+    dev: true
 
   /string-width@4.2.3:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
@@ -1590,7 +1588,7 @@ packages:
     engines: {node: '>=14.0'}
     dependencies:
       busboy: 1.6.0
-    dev: false
+    dev: true
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
