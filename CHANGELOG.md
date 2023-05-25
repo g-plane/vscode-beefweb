@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.6.1 [2023-05-25]
+
+- Ignore tests files when publishing.
+
 ## v0.6.0 [2023-05-25]
 
 - Support running extension on Web (VS Code for Web).
