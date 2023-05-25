@@ -38,6 +38,23 @@ Select a song from playlist:
 
 ![](https://media.githubusercontent.com/media/g-plane/vscode-beefweb/master/media/list.png)
 
+## Running on Web
+
+This extension is supported on VS Code for Web like [github.dev](https://github.dev) or [vscode.dev](https://vscode.dev).
+However, due to CORS in browsers, you must configure CORS headers on Beefweb.
+
+You can configure Beefweb in `beefweb.config.json` like this:
+
+```json
+{
+  "responseHeaders": {
+    "Access-Control-Allow-Origin": "*"
+  }
+}
+```
+
+For more detail, please refer to [Configuring Beefweb Web Server](https://github.com/hyperblast/beefweb/blob/master/docs/advanced-config.md#web-server-settings).
+
 ## License
 
 MIT License (c) 2018-present Pig Fang
