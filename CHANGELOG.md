@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.7.0 [2023-05-30]
+
+- Support configuring Beefweb server URL.
+
 ## v0.6.1 [2023-05-25]
 
 - Ignore tests files when publishing.
