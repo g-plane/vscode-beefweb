@@ -11,11 +11,17 @@ export function createActivator(env: Environment) {
     status.show()
     context.subscriptions.push(status)
 
-    const controller = new PlayerController(
-      env,
-      vscode.workspace.getConfiguration('beefweb').get('server.host'),
-      vscode.workspace.getConfiguration('beefweb').get('server.port')
-    )
+    const baseURL =
+      vscode.workspace
+        .getConfiguration('beefweb')
+        .get<string>('server.url')
+        ?.replace(/\/(?:api\/?)?$/i, '') ||
+      `http://${vscode.workspace
+        .getConfiguration('beefweb')
+        .get('server.host')}:${vscode.workspace
+        .getConfiguration('beefweb')
+        .get('server.port')}`
+    const controller = new PlayerController(env, baseURL)
     context.subscriptions.push(controller)
     controller.eventBus.on('statusChanged', (playerStatus) => {
       if (playerStatus.playbackState === 'stopped') {

@@ -70,14 +70,23 @@
     "configuration": {
       "title": "Beefweb Control",
       "properties": {
+        "beefweb.server.url": {
+          "type": "string",
+          "examples": [
+            "http://127.0.0.1:8880"
+          ],
+          "markdownDescription": "The URL of Beefweb server. It can't be suffixed with `/api`."
+        },
         "beefweb.server.host": {
           "type": "string",
           "default": "127.0.0.1",
+          "markdownDeprecationMessage": "Use `beefweb.server.url` instead.",
           "description": "The host of Beefweb server."
         },
         "beefweb.server.port": {
           "type": "integer",
           "default": 8880,
+          "markdownDeprecationMessage": "Use `beefweb.server.url` instead.",
           "description": "The port of Beefweb server."
         },
         "beefweb.statusBarAction": {

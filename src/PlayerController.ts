@@ -5,12 +5,8 @@ export class PlayerController {
   private uri: string
   private eventSource: EventSource
 
-  constructor(
-    private env: Environment,
-    host: string = '127.0.0.1',
-    port: number = 8880
-  ) {
-    this.uri = `http://${host}:${port}/api`
+  constructor(private env: Environment, baseURL: string) {
+    this.uri = `${baseURL}/api`
 
     const eventSource = new this.env.EventSource(
       `${this.uri}/query/updates?player=true&trcolumns=%25artist%25%20-%20%25title%25`

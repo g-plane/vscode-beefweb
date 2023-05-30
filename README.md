@@ -38,6 +38,14 @@ Select a song from playlist:
 
 ![](https://media.githubusercontent.com/media/g-plane/vscode-beefweb/master/media/list.png)
 
+## Customize Server URL
+
+Your Beefweb server may not run on `127.0.0.1` via port `8880`,
+then you can configure the server URL in settings.
+
+Open VS Code settings, then go to "Beefweb › Server: Url" and edit the value like this: `http://example.com:1234`.
+Please don't put the trailing `/` or `/api` to the URL.
+
 ## Running on Web
 
 This extension is supported on VS Code for Web like [github.dev](https://github.dev) or [vscode.dev](https://vscode.dev).
